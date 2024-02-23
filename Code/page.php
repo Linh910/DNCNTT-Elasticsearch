@@ -1,3 +1,27 @@
+<?php
+    use Elasticsearch\ClientBuilder;
+    
+    require "vendor/autoload.php";
+
+
+    // Elasticsearch\Client
+    // Elasticsearch\ClientBuilder
+
+    $hosts = [
+        [
+            'host' => '127.0.0.1',
+            'port' => '9200',
+            'scheme' => 'http'
+        ]
+    ];
+
+    $client = ClientBuilder::create()->setHosts($hosts)->build();
+
+    $indices = $client->cat()->indices();
+    
+    var_dump($indices);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,23 +36,7 @@
 </head>
 
 <body>
-    <!-- BEGIN wrapper -->
-    <div id="wrapper">
-        <!-- BEGIN header -->
-        <div id="header">
-            <h1><a href="index.html">Portfolio Extended</a></h1>
-            <form action="#">
-                <input type="text" name="s" id="s" value="" />
-                <button type="submit">Search</button>
-            </form>
-            <ul>
-                <li class="f"><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="page.html">News Page</a></li>
-                <li><a href="contact.html">Contact Page</a></li>
-            </ul>
-        </div>
-        <!-- END header -->
+   
         <!-- BEGIN body -->
         <div id="body">
             <!-- BEGIN content -->

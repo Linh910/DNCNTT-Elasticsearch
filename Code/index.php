@@ -3,6 +3,7 @@
     $page = $_GET["page"] ?? '';
 
     $menuitems = [
+        'search' => 'Search',
         'about' => 'ABOUT US',
         'page' =>  'NEWS PAGE',
         'contact' => 'CONTACT US'
@@ -36,24 +37,29 @@
 
             
             <ul>
-                <li class="f"><a href="#">Home</a></li>
+                <li class="f"><a href="/">Home</a></li>
 
-                <?foreach ($menuitems as $url => $label):?>
-                    <?
-                        $class='';
-                        if($page == $url)
+                <?php foreach ($menuitems as $url => $label): ?>
+                    <?php
+                        $class = '';
+                        if ($page == $url) {
                             $class = 'active';
-                    ?> 
-                    <li class="f <?=$class?>">
-                        <a href="/?page=<?=$url?>"><?=$label?></a> 
+                        }
+                    ?>
+                    <li class="f <?= $class; ?>">
+                        <a href="/?page=<?= urlencode($url); ?>"><?= htmlspecialchars($label); ?></a>
                     </li>
-                
-                <?endforeach?>
+                <?php endforeach; ?>
             </ul>
         </div>
         <!-- END header -->
         <!-- BEGIN body -->
         <div id="body">
+        <?php
+            if ($page != '') {
+                include $page . ".php";
+            } 
+        ?>
             <!-- BEGIN content -->
             <div id="content">
                 <!-- begin featured -->

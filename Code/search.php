@@ -9,41 +9,41 @@
 
     $hosts = [
         [
-            'host' => '127.0.0.1'
+            'host' => '127.0.0.1',
             'port' => '9200',
             'scheme' => 'http'
         ]
-        ];
+    ];
 
-    $client = ClientBuilder::cretae()->setHosts($hosts)->build();
+    $client = ClientBuilder::create()->setHosts($hosts)->build();
 
     $exists = $client->indices()->exists(['index' => 'article']);
 
-    if(!$exists){
-        throw new Exception("Index - article khon ton tai ")
+    // if(!$exists){
+    //     throw new Exception("Index - article khon ton tai ")
 
 
-    }
+    // }
 
-    $search = $_POST['search'] ?? '';
+    // $search = $_POST['search'] ?? '';
     
-    if($search != ''){
+    // if($search != ''){
         
-        $params = [
-            'index' => 'article',
-            'type' => 'article_type',
-            'body' => [
-                'query' => [
-                    'match' => [
-                        'testkey' => 'testvalue'
-                    ]
-                ]
-            ]
-        ];
+    //     $params = [
+    //         'index' => 'article',
+    //         'type' => 'article_type',
+    //         'body' => [
+    //             'query' => [
+    //                 'match' => [
+    //                     'testkey' => 'testvalue'
+    //                 ]
+    //             ]
+    //         ]
+    //     ];
         
-        $results = $client->search($params);
+    //     $results = $client->search($params);
 
-    }
+    // }
 
 ?>
 
